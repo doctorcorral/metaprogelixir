@@ -10,10 +10,17 @@ defmodule Assertion do
   defmacro __before_compile__(_env) do
     quote do
       def run do
-        IO.puts "Corriendo los test"
+        IO.puts("Corriendo los test #{inspect @tests}")
       end
     end
+  end
 
+  defmacro test(description, do: test_block) do
+    test_func = String.to_atom(description)
+    quote do
+      @tests {unquote(test_func), unquote(description)}
+      def unquote(test_func)(), do: unquote(test_block)
+    end
   end
 
 end
