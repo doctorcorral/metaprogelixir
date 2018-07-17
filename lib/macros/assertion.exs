@@ -28,3 +28,21 @@ defmodule Assertion do
     end
   end
 end
+
+defmodule Assertion.Test do
+  def run(tests, module) do
+    Enum.each(tests, fn {test_func, description} ->
+      case apply(module, test_func, []) do
+        :ok -> IO.write(".")
+        {:fail, reason} -> IO.puts """
+        ===========================
+          FALLAAAA: #{description}
+        ===========================
+          #{reason}
+        """"
+      end
+    end)
+  end
+
+
+end
