@@ -21,4 +21,10 @@ defmodule Assertion do
       def unquote(test_func)(), do: unquote(test_block)
     end
   end
+
+  defmacro assert({operator, _, [lhs, rhs]}) do
+    quote bind_quoted: [operator: operator, lhs: lhs, rhs: rhs] do
+      Assertion.Test.assert(operator, lhs, rhs)
+    end
+  end
 end
