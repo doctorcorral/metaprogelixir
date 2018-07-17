@@ -59,5 +59,11 @@ defmodule Assertion.Test do
     :ok
   end
 
+  def assert(:>, lhs, rhs) do
+    {:fail, """
+      Expected:            #{lhs}
+      to be greater than:  #{rhs}
+  """}
+  end
 
 end
