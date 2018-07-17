@@ -44,5 +44,16 @@ defmodule Assertion.Test do
     end)
   end
 
+  def assert(:==, lhs, rhs) when lhs == rhs do
+    :ok
+  end
+  def assert(:==, lhs, rhs) do
+    {:fail, """
+    Expected:           #{lhs}
+    to be equal to :    #{rhs}
+    """
+    }
+  end
+
 
 end
