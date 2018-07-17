@@ -55,5 +55,9 @@ defmodule Assertion.Test do
     }
   end
 
+  def assert(:>, lhs, rhs) when lhs > rhs do
+    :ok
+  end
+
 
 end
