@@ -6,4 +6,10 @@ defmodule Assertion do
       @before_compile unquote(__MODULE__)
     end
   end
+
+  defmacro __before_compile__(_env) do
+    quote do
+      def run, do: Assertion.Test.run(@tests, __MODULE__)
+    end
+  end
 end
