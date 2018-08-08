@@ -1,0 +1,4 @@
+application/javascript  .js 
+application/json    .json 
+image/jpeg   .jpeg, .jpg 
+video/jpeg  .jpgv
